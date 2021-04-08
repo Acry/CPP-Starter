@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build current file",
+            "type": "shell",
+            "command": "time",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "args": ["make", "-j$(nproc)", "${fileBasenameNoExtension}"]
+        },
+        {
+            "label": "run current file",
+            "type": "process",
+            "command": "./${fileBasenameNoExtension}",
+            "options": {
+                "cwd": "${workspaceFolder}/dest/",
+            },
+        },
+        {
+            "label": "make all",
+            "type": "shell",
+            "command": "time",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "args": ["make", "-j$(nproc)", "all"]
+        },
+        {
+            "label": "make clean",
+            "type": "shell",
+            "command": "time",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "args": ["make", "clean"]
+        }
+    ]
+}
